@@ -4,11 +4,11 @@ summary: Java on practice
 vendor:
   name: Maxim Kochetkov
 programming_language: Java
-programming_language_version: 11
+programming_language_version: 11 11
 solutions_hidden: true
 content:
 - Template
 - Theory
-- Quize
+- Quiz
 - Task
 - Framework

@@ -54,5 +54,4 @@ public class Tests {
                 Matchers.is(expectedLength)
         );
     }
-
 }

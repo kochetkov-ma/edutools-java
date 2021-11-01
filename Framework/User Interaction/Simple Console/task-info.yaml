@@ -1,0 +1,8 @@
+type: theory
+files:
+- name: src/ConsoleClient.java
+  visible: false
+- name: src/UserInformation.java
+  visible: false
+- name: src/Main.java
+  visible: true
