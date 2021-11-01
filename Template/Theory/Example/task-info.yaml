@@ -1,0 +1,6 @@
+type: theory
+files:
+- name: src/Main.java
+  visible: true
+- name: img.png
+  visible: true

@@ -1,0 +1,12 @@
+type: edu
+files:
+- name: src/Task.java
+  visible: true
+  placeholders:
+  - offset: 165
+    length: 52
+    placeholder_text: /* код сложения и вывода в консоль */
+- name: test/Tests.java
+  visible: false
+- name: test/Answer.java
+  visible: false

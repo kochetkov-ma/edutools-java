@@ -1,0 +1,14 @@
+title: Java Course
+language: English
+summary: Java on practice
+vendor:
+  name: Maxim Kochetkov
+programming_language: Java
+programming_language_version: 11
+solutions_hidden: true
+content:
+- Template
+- Theory
+- Quize
+- Task
+- Framework

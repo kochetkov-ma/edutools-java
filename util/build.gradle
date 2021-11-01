@@ -1,0 +1,8 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter-api'
+    api 'com.github.javaparser:javaparser-symbol-solver-core:3.23.0'
+}

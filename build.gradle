@@ -1,0 +1,87 @@
+import java.nio.file.Files
+
+plugins { id 'java' }
+
+wrapper {
+    gradleVersion = "$wrapperVersion"
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+def printOutput(def output) {
+    println "#educational_plugin_checker_version 1"
+    def separator = System.lineSeparator()
+    Collection<String> lines = output.toString().split("(?<=${separator})|(?=${separator})")
+    lines.forEach { println "#educational_plugin" + it }
+}
+
+rootProject.afterEvaluate {
+    File gradlewFixed = file "$rootDir/util/resource/gradlew.java"
+    File gradlew = file "$rootDir/gradlew.bat"
+
+    if (!gradlew.exists() || (Files.size(gradlew.toPath()) != Files.size(gradlewFixed.toPath()))) {
+        println "Update gradlew.bat"
+        copy { from gradlewFixed; into rootDir; rename("gradlew.java", "gradlew.bat") }
+    }
+}
+
+subprojects {
+    apply plugin: 'application'
+    apply plugin: 'java'
+
+    if (project.findProperty('educationalRun') ?: false) {
+        def runOutput = new ByteArrayOutputStream()
+        tasks.run.setStandardOutput(runOutput)
+        tasks.run.doLast { printOutput(runOutput) }
+    }
+
+    project.mainClassName = project.findProperty('mainClass') ?: "Main"
+
+    sourceCompatibility = JavaVersion.VERSION_11
+    tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+
+    repositories { mavenCentral() }
+
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group.contains('org.junit.jupiter')) useVersion junitVersion
+            if (requested.group.contains('org.hamcrest')) useVersion hamcrestVersion
+        }
+    }
+
+    dependencies {
+        testImplementation 'org.hamcrest:hamcrest'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api'
+        testImplementation 'org.junit.jupiter:junit-jupiter-params'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+        if (name != 'util') {
+            implementation project(':util')
+            testImplementation project(':util')
+        }
+    }
+
+    sourceSets {
+        main { java.srcDir 'src'; resources.srcDir 'resource' }
+        test { java.srcDir 'test' }
+    }
+
+    test {
+        useJUnitPlatform()
+        systemProperties << ['junit.jupiter.extensions.autodetection.enabled': true]
+        testLogging { events 'PASSED', 'FAILED', 'SKIPPED' }
+
+        reports.html.required = false
+        reports.junitXml.required = false
+
+        String home = "$gradle.gradleUserHomeDir/.tmp/${project.name.hashCode()}/build"
+        String test = "$home/test"; def main = "$home/main"
+
+        doFirst {
+            copy { from sourceSets.test.output.files; into test }
+            copy { from sourceSets.main.output.files; into main }
+        }
+
+        doLast { delete(test, main) }
+
+        classpath = files(main, test) + (sourceSets.test.runtimeClasspath - (sourceSets.test.output + sourceSets.main.output))
+    }
+}
