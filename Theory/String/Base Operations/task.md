@@ -1,45 +1,77 @@
+## Basic operation with String
 
-This is a task description file.
-Its content will be displayed to a learner
-in the **Task Description** window.
+## String creation
 
-It supports both Markdown and HTML.
-To toggle the format, you can rename **task.md**
-to **task.html**, or vice versa.
-The default task description format can be changed
-in **Preferences | Tools | Education**,
-but this will not affect any existing task description files.
+`String newString = "my string"`
 
-The following features are available in
-**task.md/task.html** which are specific to the EduTools plugin:
+- define variable `newString`
+- with type `String`
+- set value `"my string"`
+- any String value should be surround a `quotes`
 
-- Hints can be added anywhere in the task text.
-Type "hint" and press Tab.
-Hints should be added to an empty line in the task text.
-In hints you can use both HTML and Markdown.
-<div class="hint">
+> **Good!**
+>
+> ```java
+> String newString = "my string";
+> ```
 
-Text of your hint
+> **Bad!**
+>
+> _Don't use constructor._
+> ```java
+> String newString = new String("my string");
+> ```
 
-</div>
+## String concatenation
 
-- You may need to refer your learners to a particular lesson,
-task, or file. To achieve this, you can use the in-course links.
-Specify the path using the `[link_text](course://lesson1/task1/file1)` format.
+`String newString = "left" + "right"`
 
-- You can insert shortcuts in the task description.
-While **task.html/task.md** is open, right-click anywhere
-on the **Editor** tab and choose the **Insert shortcut** option
-from the context menu.
-For example: &shortcut:FileStructurePopup;.
+- use `+` to concat two strings `"left"` and `"right"`
 
-- Insert the &percnt;`IDE_NAME`&percnt; macro,
-which will be replaced by the actual IDE name.
-For example, **%IDE_NAME%**.
+> Bad!
+> ```java
+> String newString = "string 1" + "string 2";
+> ```
+> _out:_ `"string 1string 2"`
+>
+> We **missed** space.
 
-- Insert PSI elements, by using links like
-`<a href="psi_element://link.to.element">element description</a>`.
-To get such a link, right-click the class or method
-and select **Copy Reference**.
-Then press &shortcut:EditorPaste; to insert the link where appropriate.
-For example, a <a href="psi_element://java.lang.String#contains">link to the "contains" method</a>.
+> Good!
+> ```java
+> String newString = "string 1" + " " + "string 2";
+> ```
+> _out:_ `"string 1 string 2"`
+>
+> Space here! Because we take into account and concat `" "` between our strings.
+
+## Code
+
+Try this code in [Main class](src/Main.java):
+
+```java
+String myStringFirst = "1";
+String myStringSecond = "2";
+System.out.println("Print sum of two values: 1 plus 2");
+System.out.println(myStringFirst + " + " + myStringSecond + " = " + (1 + 2));
+```
+
+We say to program:
+> Create variable `myStringFirst` with value string value `"1"`  
+> Create variable `myStringSecond` with value string value `"2"`  
+> Print some information message `"Print sum of two values: 1 plus 2"`  
+> Print the expression `1 + 2 = `  
+> Calculate `(1 + 2)`  
+> And concat the result of calculation to expression  
+> Out will be: `1 + 2 = 3`
+
+### JDK class [String](psi_element://java.lang.String)
+
+Using `class String` as type of defined variables.
+
+## Internal course Links
+
+- [Do this task](course://Task/String/Base%20Operations)
+
+## External Links
+
+- [Java Rush - String](https://javarush.ru/quests/lectures/en.questsyntaxpro.level09.lecture04.story)
