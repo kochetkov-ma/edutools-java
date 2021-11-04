@@ -1,45 +1,42 @@
+## String concatenation
 
-This is a task description file.
-Its content will be displayed to a learner
-in the **Task Description** window.
+---
 
-It supports both Markdown and HTML.
-To toggle the format, you can rename **task.md**
-to **task.html**, or vice versa.
-The default task description format can be changed
-in **Preferences | Tools | Education**,
-but this will not affect any existing task description files.
+# Task
 
-The following features are available in
-**task.md/task.html** which are specific to the EduTools plugin:
+**There is a method `String sumAB(int a, int b)` in class `Task`.**
 
-- Hints can be added anywhere in the task text.
-Type "hint" and press Tab.
-Hints should be added to an empty line in the task text.
-In hints you can use both HTML and Markdown.
+- should return `String`
+- `String` is an expression of sum `a` and `b`  
+- result should be like this pattern `a + b = sum`
+  - where `a` is first method parameter
+  - where `b` is second method parameter
+  - where `sum` is math sum value of `a` and `b`
+
+## Example:
+**`When` input is**
+```
+a = 1
+b = 2
+```
+
+**`And` method will be invoked as** `thisTask(1, 2); `
+
+**`Then` output should be** `1 + 2 = 3`
+
+---
+
+## Extra information
+
+### Java capabilities
+
+- [method String.concat](psi_element://java.lang.String#startsWith)
+
+## `Hints`:
 <div class="hint">
 
-Text of your hint
+- use bracket for calculate sum before concat: `... + (a + b)`
+- use `+` for concat, don't forget about pretty expression with `+` and `=`
+- `a + "+" + b ...`
 
 </div>
-
-- You may need to refer your learners to a particular lesson,
-task, or file. To achieve this, you can use the in-course links.
-Specify the path using the `[link_text](course://lesson1/task1/file1)` format.
-
-- You can insert shortcuts in the task description.
-While **task.html/task.md** is open, right-click anywhere
-on the **Editor** tab and choose the **Insert shortcut** option
-from the context menu.
-For example: &shortcut:FileStructurePopup;.
-
-- Insert the &percnt;`IDE_NAME`&percnt; macro,
-which will be replaced by the actual IDE name.
-For example, **%IDE_NAME%**.
-
-- Insert PSI elements, by using links like
-`<a href="psi_element://link.to.element">element description</a>`.
-To get such a link, right-click the class or method
-and select **Copy Reference**.
-Then press &shortcut:EditorPaste; to insert the link where appropriate.
-For example, a <a href="psi_element://java.lang.String#contains">link to the "contains" method</a>.
