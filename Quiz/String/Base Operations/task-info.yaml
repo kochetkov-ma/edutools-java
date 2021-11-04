@@ -1,12 +1,19 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
 options:
-- text: Correct
+- text: new String("foo").concat("bar")
   is_correct: true
-- text: Incorrect
+- text: new String("foo") + "bar"
+  is_correct: true
+- text: new String("foo").plus("bar")
+  is_correct: false
+- text: new String("foo") + bar
+  is_correct: false
+- text: foo + "bar"
+  is_correct: false
+- text: '"foo" + "bar"'
+  is_correct: true
+- text: "foo + bar"
   is_correct: false
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
-files:
-- name: src/Main.java
-  visible: true

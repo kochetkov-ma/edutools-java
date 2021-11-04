@@ -1,6 +1,8 @@
 ## Title
 
-Image here:  
+---
+
+_Image here:_  
 ![sd](img.png)
 
 ## Chapter 1

@@ -2,5 +2,9 @@ type: edu
 files:
 - name: src/Task.java
   visible: true
+  placeholders:
+  - offset: 432
+    length: 31
+    placeholder_text: /* result expression with sum of a and b */
 - name: test/Tests.java
   visible: false
