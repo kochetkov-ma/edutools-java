@@ -27,3 +27,23 @@ go the Marketplace tab and search for the EduTools plugin.
 - [EduTools Plugin](https://plugins.jetbrains.com/plugin/10081-edutools)
 - [EduTools Documentation](https://plugins.jetbrains.com/plugin/10081-edutools/docs)
 
+## FAQ
+
+### Edu Tools cannot upload on Stepik
+It's a bug!
+
+The `latest` work version is `2022.2-2021.2-699`. After `2022.2-2021.2-699` the bug exists.
+- You should install `Idea 2021.3.3`
+- Download plugin file [`2022.2-2021.2-699`](https://plugins.jetbrains.com/plugin/10081-edutools/versions/stable/160949)
+- Install plugin **form disk**
+
+### There no menu item Course Creator > Upload Course on Stepik
+- Create empty course through Stepik Web App
+- Get the course `ID` from URL
+- Create `course-remote-info.yaml` in the root dir
+```yaml
+id: 115700
+update_date: Thu, 07 Apr 2022 20:29:33 UTC
+```
+- LogIn to Stepik in Idea Settings
+- Take a look at new menu item `Course Creator > Upload Course on Stepik`

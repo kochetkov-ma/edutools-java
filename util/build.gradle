@@ -4,5 +4,10 @@ plugins {
 
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter-api'
-    api 'com.github.javaparser:javaparser-symbol-solver-core:3.23.0'
+    api("com.github.javaparser:javaparser-symbol-solver-core:$javaparserVersion") {
+        exclude group: 'com.google.code.findbugs'
+        exclude module: 'checker-qual'
+        exclude module: 'error_prone_annotations'
+        exclude module: 'j2objc-annotations'
+    }
 }

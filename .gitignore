@@ -9,3 +9,6 @@ gradle/wrapper/gradle-wrapper.jar
 build/
 out/
 .coursecreator/
+section-remote-info.yaml
+task-remote-info.yaml
+course-remote-info.yaml

@@ -66,14 +66,16 @@ subprojects {
 
     test {
         useJUnitPlatform()
-        systemProperties << ['junit.jupiter.extensions.autodetection.enabled': true]
+        systemProperties << ['junit.jupiter.extensions.autodetection.enabled': true,
+                             'courseLocale'                                  : findProperty("courseLocale") ?: 'en']
         testLogging { events 'PASSED', 'FAILED', 'SKIPPED' }
 
         reports.html.required = false
         reports.junitXml.required = false
 
         String home = "$gradle.gradleUserHomeDir/.tmp/${project.name.hashCode()}/build"
-        String test = "$home/test"; def main = "$home/main"
+        String test = "$home/test"
+        def main = "$home/main"
 
         doFirst {
             copy { from sourceSets.test.output.files; into test }
